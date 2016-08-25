@@ -16,8 +16,8 @@ class SignInViewController: UIViewController, DismissViewControllerDelegate {
     
     func setDefaultValues() {
         
-        self.emailTextField.text = "careGiver0@gmail.com"
-        self.passwordTextField.text = "careGiver"
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
         
     }
     

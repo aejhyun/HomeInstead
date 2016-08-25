@@ -44,8 +44,8 @@ class CareGiverTaskListViewController: UIViewController, UIBarPositioningDelegat
     var specializedOptionButtonEnabledRows: [Bool] = [Bool]()
     
     var tasks: [String] = [String]()
-    var standardTasks = ["Go on a walk", "Give a bath", "Dance", "Give a message", "Practice language", "Excersice", "Go shopping", "Go out to the park", "Look at a flower", "Read a book", "Play piano", "Make a new friend", "Wash clothes", "Paint nails", "Paint"]
-    var specializedTasks = ["Eat some food", "Watch TV", "Ride a bike", "Dance", "Give a message", "Practice language", "Excersice", "Go shopping", "Go out to the park", "Look at a flower", "Read a book", "Play piano", "Make a new friend", "Wash clothes", "Paint nails", "Paint"]
+    var standardTasks = ["Go on a walk", "Give a bath", "Dance", "Give a message", "Practice language", "Exercise", "Go shopping", "Go out to the park", "Look at a flower", "Read a book", "Play piano", "Make a new friend", "Wash clothes", "Paint nails", "Paint"]
+    var specializedTasks = ["Eat some food", "Watch TV", "Ride a bike", "Dance", "Give a message", "Practice language", "Go shopping", "Go out to the park", "Look at a flower", "Read a book", "Play piano", "Make a new friend", "Wash clothes", "Paint nails", "Paint"]
     
     var comments: [String] = [String]()
     var standardComments: [String] = [String]()
@@ -79,7 +79,8 @@ class CareGiverTaskListViewController: UIViewController, UIBarPositioningDelegat
     var finishTime: String = ""
     var finishAddress: String = ""
     
-    var doneButtonTappedRows: [Int] = [Int]()
+    var standardDoneButtonTappedRows: [Int] = [Int]()
+    var specializedDoneButtonTappedRows: [Int] = [Int]()
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.TopAttached
@@ -309,8 +310,12 @@ class CareGiverTaskListViewController: UIViewController, UIBarPositioningDelegat
         
         if self.selectedTaskType == TaskType.standard {
             self.standardDoneButtonEnabledRows[indexPath!.row] = false
+            self.commentsToBeUploaded.append(self.standardComments[indexPath!.row])
+            self.imagesToBeUploaded.append(self.standardImages[indexPath!.row])
         } else if self.selectedTaskType == TaskType.specialized {
             self.specializedDoneButtonEnabledRows[indexPath!.row] = false
+            self.commentsToBeUploaded.append(self.specializedComments[indexPath!.row])
+            self.imagesToBeUploaded.append(self.specializedImages[indexPath!.row])
         }
         
 //        self.expandButtonTappedIndexPath = nil
@@ -319,8 +324,6 @@ class CareGiverTaskListViewController: UIViewController, UIBarPositioningDelegat
         self.tableView.endUpdates()
         
         self.setReadOnlyVariablesForTaskType(self.selectedTaskType)
-        
-        self.doneButtonTappedRows.append(indexPath!.row)
         
         
         self.taskDescriptionsToBeUploaded.append(self.tasks[indexPath!.row])
@@ -504,10 +507,8 @@ class CareGiverTaskListViewController: UIViewController, UIBarPositioningDelegat
         self.finishButton.enabled = false
         self.finishTime = self.getCurrentTime()
         
-        for row in self.doneButtonTappedRows {
-            self.commentsToBeUploaded.append(self.comments[row])
-            self.imagesToBeUploaded.append(self.images[row])
-        }
+        print(self.commentsToBeUploaded)
+        print(self.imagesToBeUploaded)
         
         self.attemptGettingCurrentAddress { (gotAddressSuccessfully, address) -> Void in
             if gotAddressSuccessfully {

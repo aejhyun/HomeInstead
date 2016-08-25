@@ -44,20 +44,20 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func setDefaultTextFieldValues() {
         
-        self.nameTextField.text = "Jae Kim"
-        self.emailTextField.text = "cathy1@gmail.com"
-        self.passwordTextField.text = self.selectedUserType.rawValue
-        self.confirmPasswordTextField.text = self.selectedUserType.rawValue
-        self.verificationCodeTextField.text = self.selectedUserType.rawValue
-        self.provinceTextField.text = "湖北"
-        self.cityTextField.text = "武汉"
-        self.districtTextField.text = "Gangstah District"
-        self.streetOneTextField.text = "19300 Nassau St."
+        self.nameTextField.text = ""
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+        self.confirmPasswordTextField.text = ""
+        self.verificationCodeTextField.text = ""
+        self.provinceTextField.text = ""
+        self.cityTextField.text = ""
+        self.districtTextField.text = ""
+        self.streetOneTextField.text = ""
         self.streetTwoTextField.text = ""
         self.streetThreeTextField.text = ""
-        self.postalCodeTextField.text = "92508"
-        self.phoneNumberTextField.text = "9518077192"
-        self.emergencyPhoneNumberTextField.text = "4350937283"
+        self.postalCodeTextField.text = ""
+        self.phoneNumberTextField.text = ""
+        self.emergencyPhoneNumberTextField.text = ""
         
     }
     
